@@ -43,7 +43,7 @@ function Doctors({ doctors, handleSubmit }) {
 
         <Button
           variant="info"
-          onClick={() => handleSubmit({ name, crm, specialty })}
+          onClick={() => addDoctor(name, crm, specialty, handleSubmit) }
         >
           Adicionar
         </Button>
@@ -73,6 +73,14 @@ function Doctors({ doctors, handleSubmit }) {
       </Table>
     </Fragment>
   );
+}
+
+function addDoctor(name, crm, specialty, handleSubmit) {
+  // verifies if input is correct
+  if (!isNaN(name) || isNaN(crm) || !isNaN(specialty)) { return }
+  if (name === "" || crm === "" || specialty === "") { return }
+  // calls handler if everything is correct
+  handleSubmit({ name, crm, specialty })
 }
 
 export default Doctors;
