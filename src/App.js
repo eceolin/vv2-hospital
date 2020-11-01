@@ -8,8 +8,17 @@ import Rooms from "./containers/Rooms";
 
 function App() {
   const [step, setStep] = useState("doctors");
-  const [doctors, setDoctors] = useState([]);
-  const [rooms, setRooms] = useState([]);
+  const [doctors, setDoctors] = useState([
+    {name: "Luiz Guerra", crm: "157", specialty: "Cardiologista"},
+    {name: "Eduardo Ceolin", crm: "194", specialty: "Dermatologista"},
+    {name: "Leonardo Malheiros", crm: "273", specialty: "Neurologista"}
+  ]);
+  const [rooms, setRooms] = useState([
+    {name: "Hera", type: "Pequena"},
+    {name: "Demeter", type: "Grande"},
+    {name: "Hestia", type: "Alto-Risco"},
+    {name: "Hephaestus", type: "Alto-Risco"}
+  ]);
   const [reservations, setReservations] = useState([]);
 
   const changeStep = (newStep) => {
@@ -37,10 +46,7 @@ function App() {
         <Button variant="outline-info" onClick={() => changeStep("doctors")}>
           Ir para médicos
         </Button>
-        <Button
-          variant="outline-info"
-          onClick={() => changeStep("reservations")}
-        >
+        <Button variant="outline-info" onClick={() => changeStep("reservations")}>
           Ir para reservas
         </Button>
       </ButtonGroup>
