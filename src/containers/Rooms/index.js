@@ -35,8 +35,7 @@ function Rooms({ rooms, handleSubmit }) {
             ))}
           </Form.Control>
         </Form.Group>
-
-        <Button variant="info" onClick={() => handleSubmit({ name, type })}>
+        <Button variant="info" onClick={() => addRoom(name, type, handleSubmit)}>
           Adicionar
         </Button>
       </Form>
@@ -63,6 +62,17 @@ function Rooms({ rooms, handleSubmit }) {
       </Table>
     </Fragment>
   );
+}
+
+function addRoom(name, type, handleSubmit) {
+  // verifies if input is correct
+  if (name.length < 3 || !roomSizeIsValid(type)) { return }
+  // calls handler if everything is correct
+  handleSubmit({ name, type })
+}
+
+function roomSizeIsValid(name) {
+  return name === "Pequena" || name === "Grande" || name === "Alto risco"
 }
 
 export default Rooms;
